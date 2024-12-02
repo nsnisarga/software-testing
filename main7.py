@@ -13,7 +13,7 @@ class GoogleFormAutomation:
             time.sleep(2)
 
             # Fill the Name field
-            name = "Prabhu Deva"
+            name = "XYZ"
             name_input = self.driver.find_element(By.XPATH, '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
             name_input.send_keys(name)
 

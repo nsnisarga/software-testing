@@ -15,7 +15,7 @@ class Exp5Test:
         driver.find_element(By.NAME, "admission_no").send_keys("0670/IS/2021")
         time.sleep(2)
         driver.find_element(By.CLASS_NAME, "student_pass").send_keys("Nisarga@19")
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element(By.ID, "login-student").click()
         time.sleep(1000) 
 

@@ -1,37 +1,33 @@
+#Count Elements
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-import time
 
-class WhatsAppWebLoginTest(unittest.TestCase):
+class Exp8Test(unittest.TestCase):
     
     def setUp(self):
-        # Set up the WebDriver (ensure you have the appropriate driver installed)
-        chrome_driver_path = "path/to/chromedriver"  # Replace with the actual path
-        service = Service(chrome_driver_path)
-        self.driver = webdriver.Chrome(service=service)
-        self.driver.get("https://web.whatsapp.com/")
+        # Set up the WebDriver
+        self.driver = webdriver.Firefox()  # Make sure to have the GeckoDriver installed for Firefox
+        self.driver.get("http://www.google.co.in")
         self.driver.maximize_window()
     
-    def test_login_whatsapp(self):
+    def test_count_elements(self):
         driver = self.driver
         
-        print("Please scan the QR code to log in.")
-        # Wait for user to scan the QR code (adjust time if necessary)
-        time.sleep(20)  # Ensure you give sufficient time for login
+        # Get all links on the page
+        links = driver.find_elements(By.TAG_NAME, "a")
+        print(f"TOTAL NO OF LINKS = {len(links)}")
         
-        try:
-            # Check if the main WhatsApp Web interface is loaded
-            search_box = driver.find_element(By.XPATH, '//div[@title="Search input textbox"]')
-            if search_box:
-                print("Login successful! You can now use WhatsApp Web.")
-        except Exception as e:
-            print("Login failed or took too long. Please try again.")
-            print(f"Error: {e}")
+        # Get all buttons on the page
+        buttons = driver.find_elements(By.TAG_NAME, "button")
+        print(f"TOTAL NO OF BUTTONS = {len(buttons)}")
+        
+        # Get all input fields on the page
+        input_fields = driver.find_elements(By.TAG_NAME, "input")
+        print(f"TOTAL NO OF INPUT FIELDS = {len(input_fields)}")
     
     def tearDown(self):
-        # Quit the WebDriver session
+        # Stop the WebDriver
         self.driver.quit()
 
 if __name__ == "__main__":
